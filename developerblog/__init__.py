@@ -5,11 +5,13 @@ from flask_login import LoginManager
 
 app  = Flask(__name__)
 
+app.config['SECRET_KEY'] = "prakash"
+
 ######################################
 ##########  DATABASE #################
 ######################################
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:1234@localhost/flaskblog"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:1234@localhost/flaskblog"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -39,3 +41,7 @@ app.register_blueprint(core)
 
 from developerblog.errors_page.handlers import errors_page
 app.register_blueprint(errors_page)
+
+
+from developerblog.users.views import users
+app.register_blueprint(users)

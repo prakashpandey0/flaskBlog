@@ -17,9 +17,27 @@
         <li class="nav-link">
             <a href="{{url_for('core.info')}}">ABOUT</a>
         </li>
+        {% if current_user.is_authenticated %}
         <li class="nav-link">
-          <a href="#">LOGIN</a>
+          <a href="{{url_for('users.logout')}}">LOGOUT</a>
         </li>
+        <li class="nav-link">
+          <a href="{{url_for('users.account')}}">ACCOUNT</a>
+        </li>
+        <li class="nav-link">
+          <a href="#">CREATE POST</a>
+        </li>
+        {% else %}
+
+
+        <li class="nav-link">
+          <a href="{{url_for('users.login')}}">LOGIN</a>
+        </li>
+        <li class="nav-link">
+          <a href="{{url_for('users.register')}}">REGISTER</a>
+        </li>
+
+        {% endif %}
     </ul>
     <div class="container">
 

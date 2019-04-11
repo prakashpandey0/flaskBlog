@@ -2,14 +2,14 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
 from wtforms import ValidationError
-from flask_wtf import FileField, FileAllowed
+from flask_wtf.file import FileField, FileAllowed
 
 from flask_login import current_user
 from developerblog.models import User
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password  = PasswordField('Password', validators[DataRequired()])
+    password  = PasswordField('Password', validators=[DataRequired()])
     submit   = SubmitField('LogIn')
 
 
@@ -34,7 +34,7 @@ class RegistrationForm(FlaskForm):
 class UpdateUserForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     username = StringField('Username', validators=[DataRequired()])
-    profile = FileField('Upload Profile', validators[FileAllowed(['jpeg','png','jpg'])])
+    profile = FileField('Upload Profile', validators=[FileAllowed(['jpeg','png','jpg'])])
     submit = SubmitField('Update')
 
     def check_email(self, field):

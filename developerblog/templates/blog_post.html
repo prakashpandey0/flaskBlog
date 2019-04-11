@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content%}
+
+  <div class="jumbotron">
+      <div align="center">
+        <h1>Welcome {{user.username}}</h1>
+        <img align="center" src="{{url_for('static',filename='profile_pics'+user.profile)}}" alt="None">
+      </div>
+  </div>
+
+  {% for post in  blog.items %}
+
+          {{post.date}}<br>
+          {{post.title}}<br>
+          {{post.text}}<br>
+          <p>Written BY:{{post.author.username}}</p><br>
+          <hr>
+  {%endfor%}
+
+{% endblock %}
