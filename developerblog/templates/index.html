@@ -4,5 +4,14 @@
         <h1>Welcome To Developer Spot</h1>
       </div>
 
+      {% for post in posts.items %}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.text}}</p>
+          <a href="{{url_for('blogs.blog_post', blog_post_id= post.id)}}" class="btn btn-primary">view</a>
+        </div>
+      </div>
+      {%endfor%}
 
 {% endblock %}

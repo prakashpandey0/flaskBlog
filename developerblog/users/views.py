@@ -78,7 +78,6 @@ def account():
     profile = url_for('static',filename='profile_pics/'+current_user.profile)
     return render_template('account.html', form = form, profile = profile)
 
-
 @users.route('/<username>')
 def posts(username):
     page = request.args.get('page', 1, type=int)
